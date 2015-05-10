@@ -26,22 +26,31 @@ public class ListagemDeLivros {
 		return (Livro[]) result.toArray(new Livro[0]);
 	}
 	
+        public Livro consultaPorCodigo (int codigo){
+            for(int i=0;i<livros.length;i++){
+                if(livros[i].getCodigo()==codigo)
+                    return livros[i];
+            }
+            return null;
+        }
+        
 	public Livro[] consultaPorAssunto(String assunto) {
-		ArrayList<Livro> result = new ArrayList<Livro>();
-		for(int i = 0; i < livros.length; i++) {
-		   for (int j=0; j<livros[i].getAssunto().length;j++)
-			if( livros[i].getAssunto()[j].contains(assunto))				    
-			    result.add(livros[i]);
+            ArrayList<Livro> result = new ArrayList<Livro>();
+            for(int i = 0; i < livros.length; i++) {
+                for (int j=0; j<livros[i].getAssunto().length;j++)
+                    if( livros[i].getAssunto()[j].contains(assunto))				    
+                        result.add(livros[i]);
 		}
-		return (Livro[]) result.toArray(new Livro[0]);
+            return (Livro[]) result.toArray(new Livro[0]);
 	}
+        
 	public Livro[] consultaPorAutor(String autor) {
-		ArrayList<Livro> result = new ArrayList<Livro>();
-		for(int i = 0; i < livros.length; i++) {
-		   for (int j=0; j<livros[i].getAutor().length;j++)
-			if( livros[i].getAutor()[j].getSobrenome().contains(autor))				    
-			    result.add(livros[i]);
+            ArrayList<Livro> result = new ArrayList<Livro>();
+            for(int i = 0; i < livros.length; i++) {
+               for (int j=0; j<livros[i].getAutor().length;j++)
+                    if( livros[i].getAutor()[j].getSobrenome().contains(autor))				    
+			result.add(livros[i]);
 		}
-		return (Livro[]) result.toArray(new Livro[0]);
+            return (Livro[]) result.toArray(new Livro[0]);
 	}
 }
