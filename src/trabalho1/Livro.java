@@ -27,8 +27,12 @@ public class Livro {
 	this.editora = editora;
 	this.assunto = assunto;
     }
-  
 
+    public Livro() {
+    }
+    
+
+  
     public int getCodigo() {
 	return codigo;
     }
@@ -38,10 +42,7 @@ public class Livro {
     }
 
     public Autor[] getAutor() {
-
-	    return autor;
-	
-	
+        return autor;
     }
 
     public int getAno() {
@@ -56,23 +57,26 @@ public class Livro {
 	return assunto;
     }
     
-    public String referencia(){
-	String aut=""  ;
-	for(int i =0;i<autor.length;i++){
-	aut = autor[i].getSobrenome().toUpperCase()+","+autor[i].getNome();
-    }
-	return aut+"."+getTitulo()+"."+getEditora()+","+getAno();
-    }
-public String consultaReferencia() {
-		ArrayList<String> result = new ArrayList<String>();
-		for(int i = 0; i < autor.length; i++) {
-		    for(int j=0;j<autor.length;j++)
-		   result.add( autor[i].getSobrenome().toUpperCase()+","+autor[i].getNome());
-		}
-		return  (String [])result.toArray(new String[0])+"."+getEditora()+","+getAno();
+    public String consultaReferencia() {
+    
+        String ref="";
+	for(int i = 0; i < autor.length; i++) {
+	    
+        ref +=(autor[i].getSobrenome().toUpperCase().concat(",".concat(autor[i].getNome())));
+        
+        if(i<autor.length-1)	
+            ref+=";";
+        else
+            ref+=".";
+	}
+        return  ref.concat(getEditora().concat(","+getAno()));
+    }    
 }
+
+               
+		
 
 
     
     
-}
+  
