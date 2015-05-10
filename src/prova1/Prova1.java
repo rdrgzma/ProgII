@@ -32,7 +32,6 @@ public class Prova1 {
 	while(pos>=0 && pos<tag.length){
 	System.out.println("Escolha o nome da tag: ");
 	tag[pos].setNome(entrada.next());
-	
 	System.out.println("Escolha a id da tag");
 	tag[pos].setId(entrada.next());
 	
