@@ -69,7 +69,7 @@ public class Livro {
         else
             ref+=".";
 	}
-        return  ref.concat(getEditora().concat(","+getAno()));
+        return  ref+getTitulo()+"."+getEditora()+","+getAno()+".";
     }    
 }
 

@@ -42,7 +42,7 @@ public class Autor {
     }
 
     public Autor(String sobrenome, String nome) {
-	this.sobrenome = sobrenome.toUpperCase();
+	this.sobrenome = sobrenome;
 	this.nome = nome;
     }
     

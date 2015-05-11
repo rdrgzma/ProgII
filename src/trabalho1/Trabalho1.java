@@ -12,52 +12,115 @@ import java.util.Scanner;
  * @author Márcio
  */
 public class Trabalho1 {
- 
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-	Scanner entrada =new Scanner(System.in);
-	
-	System.out.println("Digite o termo da consulta: ");
-	String consulta = entrada.nextLine();
-       // consulta por codigo -- inicio
-	ListagemDeLivros livro = new ListagemDeLivros();
-        if(livro.consultaPorCodigo(10)!= null)
-            System.out.println(livro.consultaPorCodigo(1).getTitulo());
-        else
-            System.out.println("Livro nao encontrado");
-        // fim consulta por codigo
-        //inicio consulta por titulo
-	Livro [] liv = new ListagemDeLivros().consultaPorTitulo(consulta);
         
-	for(int i=0; i<liv.length;i++){
-	    System.out.println();
-	    System.out.println("Referencia: "+liv[i].consultaReferencia()); // consulta referencia
-	     
-	    System.out.println("Editora: "+liv[i].getEditora().toUpperCase()); // mostra editora
-	    if(liv[i].getAssunto().length>1) // inicio consulta assunto
-                System.out.print("Assuntos: ");
-            else
-                System.out.print("Assunto: ");
-            //consulta assunto
-	    for(int j=0; j<liv[i].getAssunto().length;j++){
-	       System.out.print(liv[i].getAssunto()[j]+" ");
-	    }
-	    System.out.println();
-            // fim consulta assunto
-            if(liv[i].getAutor().length>1) //inicio consulta autor
-	        System.out.print("Autores: ");
-            else
-                System.out.print("Autor: ");
-            
-	    for(int k=0;k<liv[i].getAutor().length;k++){
-		
-                System.out.print(liv[i].getAutor()[k].getSobrenome()+","+liv[i].getAutor()[k].getNome());
-                if(k<liv[i].getAutor().length-1)
-                    System.out.print(";");
-            } // fim consulta autor
-	    System.out.println();  
-	}
-    }   
+        Scanner entrada = new Scanner(System.in);
+        int controle =1;
+        while(controle==1){
+            System.out.println();
+            System.out.println("Digite 1: Para realizar consulta por codigo do livro.");
+            System.out.println("Digite 2: Para realizar consulta por titulo do livro.");
+            System.out.println("Digite 3: Para realizar consulta por assunto do livro.");
+            System.out.println("Digite 4: Para realizar consulta por Sobrenome do autor do livro.");
+            System.out.println("Digite qualquer outro valor para sair do sistema.");
+            System.out.println();
+            System.out.println("Digite o numero do tipo de consulta desejada: ");
+            int comando = entrada.nextInt();
+                switch (comando){
+                    default:
+                        System.out.println("Voce saiu do sistema.");
+                        controle=0;
+                        break;
+                    case 1:
+                        System.out.println("Digite o codigo do livro: ");
+                        Livro livro = new ListagemDeLivros().consultaPorCodigo(entrada.nextInt());
+                        System.out.println("-----Resultado da pesquisa-----");
+                        System.out.println();
+                        if( livro != null){
+                            System.out.println("1 resultado encontrado:");
+                            System.out.println("Titulo: "+livro.getTitulo());
+                            System.out.println("Referencia: "+livro.consultaReferencia());
+                            System.out.println();
+                        }
+                        else
+                            System.out.println("Livro nao encontrado");
+                        System.out.println();
+                        System.out.println("--------Fim da pesquisa--------");
+                        break;
+                    case 2:
+                        System.out.println("Digite o titulo do livro: ");
+                        Livro [] livros2 = new ListagemDeLivros().consultaPorTitulo(entrada.next());
+                        System.out.println("-----Resultado da pesquisa-----");
+                        System.out.println();
+                        if(livros2.length>0){
+                            if(livros2.length==1){
+                                System.out.println("1 resultado encontrado:");
+                            }
+                            else
+                                System.out.println(livros2.length+" resultados encontrados:");
+                            for(int i=0;i<livros2.length;i++){
+                                System.out.println("Codigo: "+livros2[i].getCodigo());
+                                System.out.println("Titulo: "+livros2[i].getTitulo());
+                                System.out.println();
+                            }
+                        }
+                        else
+                            System.out.println("Livro nao encontrado.");
+                        System.out.println();
+                        System.out.println("-----Resultado da pesquisa-----");
+                        break;
+                    case 3:
+                        System.out.println("digite o assunto desejado: ");
+                        Livro [] livros3 = new ListagemDeLivros().consultaPorAssunto(entrada.next());
+                        System.out.println("-----Resultado da pesquisa-----");
+                        System.out.println();
+                        if(livros3.length>0){
+                            if(livros3.length==1){
+                                System.out.println("1 resultado encontrado:");
+                            }
+                            else
+                                System.out.println(livros3.length+" resultados encontrados:");
+                            for(int i=0;i<livros3.length;i++){
+                                System.out.println("Codigo: "+livros3[i].getCodigo());
+                                System.out.println("Titulo: "+livros3[i].getTitulo());
+                                System.out.println();
+                            }
+                        }
+                        else
+                            System.out.println("Livro nao encontrado.");
+                        System.out.println();
+                        System.out.println("-----Resultado da pesquisa-----");
+                        break;
+                    case 4:
+                        System.out.println("Digite o sobrenome do autor desejado: ");
+                        Livro [] livros4 = new ListagemDeLivros().consultaPorAutor(entrada.next());
+                        System.out.println("-----Resultado da pesquisa-----");
+                        System.out.println();
+                        if(livros4.length>0){
+                            if(livros4.length==1){
+                                System.out.println("1 resultado encontrado:");
+                            }
+                            else
+                                System.out.println(livros4.length+" resultados encontrados:");
+                            for(int i=0;i<livros4.length;i++){
+                                System.out.println("Codigo: "+livros4[i].getCodigo());
+                                System.out.println("Titulo: "+livros4[i].getTitulo());
+                                System.out.println();
+                            }
+                        }
+                        else
+                            System.out.println("Livro nao encontrado.");
+                        System.out.println();
+                        System.out.println("-----Resultado da pesquisa-----");
+                        break;
+
+                }    
+        }
+       
+
+    }
 }
