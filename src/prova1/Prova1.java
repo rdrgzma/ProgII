@@ -31,16 +31,16 @@ public class Prova1 {
         
 	while(pos>=0 && pos<tag.length){
 	System.out.println("Escolha o nome da tag: ");
-	tag[pos].setNome(entrada.next());
+	tag[pos].setNome(entrada.next()); // seta o nome da tag
 	
 	System.out.println("Escolha a id da tag");
-	tag[pos].setId(entrada.next());
+	tag[pos].setId(entrada.next()); // seta a id da tag
 	
 	System.out.println("Escolha o conteudo da tag");
 	tag[pos].setConteudo(entrada.next()); 
         
         System.out.println("A tag possui fechamento? S - SIM ou N - NAO");
-        String str = entrada.next();
+        String str = entrada.next(); // seta o fechamento
         if(str.equals("S")){
 	tag[pos].setPossuiFechamento(true);}
         else if(str.equals("N")){
